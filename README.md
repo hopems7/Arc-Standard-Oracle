@@ -1,0 +1,3 @@
+# Arc-Standard-Oracle
+This program takes dependency parases in simplified CONLL format and determines the transitions that correspond to the sentence. I opted to create an oracle function and utilized a list to store the configuration. As items shift onto the stack, they are compared with head indices and word
+indices of both the items already in the stack and those remaining in the buffer to determine a transition. I created an attachment function that scans the buffer for possible children, specifically for right arc transitions. Once a transition has been determined, the proper transition is printed to the sequence output file. Items are then either inserted or deleted from the stack.
