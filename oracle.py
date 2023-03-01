@@ -61,14 +61,10 @@ def attachment(stack, arc_tup):
 	
 def main():
 	inp=sys.argv[1]
-	#dep_out=sys.argv[2]
 	seq_out=sys.argv[3]
 	outSeqFile=open(seq_out, 'w')
 	p_stack=deque()		
 	word_buffer=[]
-	words_index=[]
-	dependency_rels=[]		
-	head_index=[]
 	arc_tup=[]
 	arc_tup2=[]
 	
@@ -77,10 +73,7 @@ def main():
 		for line in inputParses:
 			if line.strip() or line=='':		#if line not blank
 				line=line.strip().split('\t')
-				words_index.append(line[0])
 				word_buffer.append(line[1])			
-				dependency_rels.append(line[2])	
-				head_index.append(line[3])
 				arc_tup.append(line)
 				
 			else: 							#if break point hit, run sentence through oracle
@@ -104,10 +97,7 @@ def main():
 						arc_tup, word_buffer, p_stack=transition(oracle_trans, p_stack, word_buffer, arc_tup)
 					
 				#clear lists for next parse
-				word_index=[]
 				word_buffer=[]
-				dependency_rels=[]
-				head_index=[]
 				arc_tup=[]
 				arc_tup2=[]
 		#catches if there is no extra line
@@ -131,10 +121,7 @@ def main():
 				arc_tup, word_buffer, p_stack=transition(oracle_trans, p_stack, word_buffer, arc_tup)
 					
 		#clear lists for next parse
-		word_index=[]
 		word_buffer=[]
-		dependency_rels=[]
-		head_index=[]
 		arc_tup=[]
 		arc_tup2=[]		
 	inputParses.close()
